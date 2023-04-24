@@ -5,7 +5,7 @@ import requests
 
 app = Flask(__name__)
 
-SWAGGER_URL = '/apidocsss'  # URL for exposing Swagger UI
+SWAGGER_URL = '/apidocs'  # URL for exposing Swagger UI
 API_URL = '\static\swagger.json'
 
 swaggerui_blueprint = get_swaggerui_blueprint(
