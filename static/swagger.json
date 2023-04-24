@@ -1,0 +1,161 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "My NBP API | Bartłomiej Andree",
+    "description": "This is a sample API for NBP API. You can find out more about NBP API at [https://api.nbp.pl/](https://api.nbp.pl/)",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/average-exchange-rate/{currency_code}/{date}": {
+      "get": {
+        "summary": "Get average exchange rate for a given date and currency code",
+        "description": "Given a date (formatted YYYY-MM-DD) and a currency code (list: [https://nbp.pl/en/statistic-and-financial-reporting/rates/table-a/](https://nbp.pl/en/statistic-and-financial-reporting/rates/table-a/)), provide its average exchange rate.",
+        "parameters": [
+          {
+            "name": "currency_code",
+            "in": "path",
+            "required": true,
+            "description": "USD, GBP, EUR etc.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "date",
+            "in": "path",
+            "required": true,
+            "description": "Date in format (YYYY-MM-DD)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "date": {
+                      "type": "string"
+                    },
+                    "currency": {
+                      "type": "string"
+                    },
+                    "rate": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Failed to get exchange rate"
+          }
+        }
+      }
+    },
+    "/max-min-average-value/{currency_code}/{n}": {
+      "get": {
+        "summary": "Get max and min average value for a given currency code and last N quotations",
+        "description": "Given a currency code and the number of last quotations N (N <= 255), provide the max and min average value (every day has a different average).",
+        "parameters": [
+          {
+            "name": "currency_code",
+            "in": "path",
+            "required": true,
+            "description": "USD, GBP, EUR etc.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "n",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "currency": {
+                      "type": "string"
+                    },
+                    "max_rate": {
+                      "type": "number"
+                    },
+                    "min_rate": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Failed to get exchange rates"
+          }
+        }
+      }
+    },
+    "/buy-ask-difference/{currency_code}/{n}": {
+      "get": {
+        "summary": "Get the largest difference between buy and ask rate for a given currency code and last N quotations",
+        "description": "Given a currency code and the number of last quotations N (N <= 255), provide the major difference between the buy and ask rate (every day has different rates).",
+        "parameters": [
+          {
+            "name": "currency_code",
+            "in": "path",
+            "required": true,
+            "description": "USD, GBP, EUR etc.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "n",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "currency": {
+                      "type": "string"
+                    },
+                    "max_diff": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Failed to get exchange rates"
+          }
+        }
+      }
+    }
+  }
+}
