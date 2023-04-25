@@ -85,7 +85,7 @@ To run the API locally, follow these steps:
 1. Clone the repository to your local machine
 2. Install the required dependencies by running `pip install -r requirements.txt`
 3. Start the API by running `python main.py`
-4. Navigate to `http://localhost:5000/apidocs` to access the Swagger UI documentation
+4. Navigate to `http://localhost:3000/apidocs` to access the Swagger UI documentation
 
 ## Testing the API
 
