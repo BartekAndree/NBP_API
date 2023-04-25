@@ -87,6 +87,9 @@ To run the API locally, follow these steps:
 3. Start the API by running `python main.py`
 4. Navigate to `http://localhost:3000/apidocs` to access the Swagger UI documentation
 
+Docker Image:
+`https://hub.docker.com/r/bartekandree/python-flask-api/tags`
+
 ## Testing the API
 
 To run the tests for the API, follow these steps:
