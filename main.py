@@ -76,4 +76,4 @@ api.add_resource(MaxMinAverageValue, '/max-min-average-value/<currency_code>/<n>
 api.add_resource(BuyAskDifference, '/buy-ask-difference/<currency_code>/<n>')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=int("3000"), debug=True)
